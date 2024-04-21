@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sa-token-test
+  namespace: k8s-study
+  labels:
+    app: sa-token-test
+spec:
+  containers:
+    - name: nginx
+      image: nginx:stable-alpine-slim
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+  serviceAccountName: sa-demo
