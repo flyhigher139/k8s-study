@@ -5,13 +5,11 @@ metadata:
   namespace: metrics
   labels:
     monitoring: istio-components
-    release: prom
+    release: prom-stack
 spec:
   jobLabel: istio
   targetLabels: [app]
   selector:
-    matchLabels:
-      app: istio-telemetry
     matchExpressions:
     - {key: istio, operator: In, values: [pilot]}
   namespaceSelector:
