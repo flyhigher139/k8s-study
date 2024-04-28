@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: istio-component-monitor
+  namespace: metrics
+  labels:
+    monitoring: istio-components
+    release: prom
+spec:
+  jobLabel: istio
+  targetLabels: [app]
+  selector:
+    matchLabels:
+      app: istio-telemetry
+    matchExpressions:
+    - {key: istio, operator: In, values: [pilot]}
+  namespaceSelector:
+    any: true
+  endpoints:
+  - port: http-monitoring
+    interval: 15s
