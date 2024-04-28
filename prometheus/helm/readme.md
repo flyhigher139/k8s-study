@@ -19,6 +19,19 @@ helm pull prometheus-community/kube-prometheus-stack --untar
 helm install -n metrics prom-stack ./kube-prometheus-stack
 ```
 
+# 2. 安装时增加自定义配置
+
+如提供 [custom-values.yaml](custom-values.yaml) 这样的自定义 values 文件，则可以用如下方式进行自定义配置：
+
+```shell
+helm install -n metrics prom-stack ./kube-prometheus-stack -f custom-values.yaml
+```
+
+用这种方法，可以为 Prometheus 修改数据持久化卷
+
+
+# 其他
+
 使用该命令查看 `metrics` 空间下安装的 chart
 ```shell
 helm -n metrics list
